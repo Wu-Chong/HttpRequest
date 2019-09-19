@@ -31,4 +31,20 @@ export class FooComponent implements OnInit {
   ngOnInit() {
   }
 
+
+ makeCompactPost(): void {
+   this.loading = true;
+   this.http
+     .post('https://jsonplaceholder.typicode.com/posts',
+       JSON.stringify({
+         body: 'bar',
+         title: 'foo',
+         userId: 1
+       })
+     )
+     .subscribe(data => {
+       this.data = data;
+       this.loading = false;
+     });
+ }
 }
